@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+    {{ track.description|raw }}
+
+    {% if track.gpx %}
+    <p><strong>GPX súbor:</strong> <a href="{{ track.public_path ~ '/' ~ track.gpx }}">{{ track.gpx }}</a></p>
+    {% endif %}
+
+    {% if track.images %}
+        {% for image in track.images %}
+            <img class="img" src="{{ track.public_path ~ '/' ~ image }}" />
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

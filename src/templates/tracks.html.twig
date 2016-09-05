@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Zoznam cyklotrás</h1>
+    <ul class="tracks">
+        {% for track in tracks %}
+
+        <li class="track">
+            <a href="?p={{ track.basename }}">{{ track.name }}</a>
+        </li>
+
+        {% endfor %}
+    </ul>
+{% endblock %}
