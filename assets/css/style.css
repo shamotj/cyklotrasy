@@ -1,0 +1,10 @@
+body { color: #000; font-family: sans-serif; text-align: center; }
+h1 { color: #666; }
+a:link { color: #008be4; }
+p, ul.tracks { width: 70%; max-width: 40em; text-align: left; margin: 1em auto; padding: 0; }
+ul.tracks { list-style: none inside; counter-reset: track-counter; }
+.track { border-bottom: 1px solid #ddd; }
+.track:last-child { border-bottom: 0 }
+.track a { padding: 1em; display: block; text-decoration: none }
+.track a:before { content: counter(track-counter)". "; counter-increment: track-counter }
+.track a:hover { background: #eee }
