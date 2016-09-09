@@ -4,9 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dec074d7f03706ece7e94a926edde084",
-    "content-hash": "37a27c1632cc1caac67e00a85ea850f4",
+    "hash": "6e57e2dc30ca60eabb9d0d6206aeeb97",
+    "content-hash": "fca288967e7143d3d4f9164a797c3fbf",
     "packages": [
+        {
+            "name": "bentasker/php-gpx-ingest",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bentasker/PHP-GPX-Ingest.git",
+                "reference": "1e3aa5bddeb82c11d573fac4e065c4de22a07ea0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bentasker/PHP-GPX-Ingest/zipball/1e3aa5bddeb82c11d573fac4e065c4de22a07ea0",
+                "reference": "1e3aa5bddeb82c11d573fac4e065c4de22a07ea0",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "GPXIngest": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Tasker",
+                    "email": "webqueries@bentasker.co.uk"
+                }
+            ],
+            "description": "PHP GPX-Ingest is a simple PHP class designed to ingest a basic Global Position eXchange (GPX) file and extract data/stats from the tracks within.",
+            "time": "2016-08-16 13:32:44"
+        },
         {
             "name": "erusev/parsedown",
             "version": "1.6.0",
@@ -111,7 +144,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "bentasker/php-gpx-ingest": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

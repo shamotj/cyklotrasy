@@ -2,7 +2,9 @@
 
 require_once 'vendor/autoload.php';
 require_once 'src/functions.php';
-require_once 'src/GPXIngest.php';
+require_once 'src/GPXIngest.php'; // This will be removed once elevation gain is in master.
+
+//use GPXIngest\GPXIngest;
 
 $dataDir = __DIR__ . '/data';
 $templateDir = __DIR__ . '/src/templates';
@@ -25,7 +27,7 @@ if (isset($_GET['p'])) {
             // Load GPX and generate stats.
             $gpx = new \GPXIngest\GPXIngest();
             $gpx->enableExperimental('calcDistance');
-            $gpx->enableExperimental('calcAscension');
+            $gpx->enableExperimental('calcElevationGain');
             $gpx->loadFile($tracks[$trackName]['public_path'] . '/' . $tracks[$trackName]['gpx']);
             $gpx->ingest();
             $stats = $gpx->getStats('journey0');
