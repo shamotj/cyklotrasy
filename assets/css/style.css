@@ -1,23 +1,9 @@
-body {
-    color: #000;
-    font-family: sans-serif;
-    text-align: center;
-}
-
 h1 {
-    color: #666;
+    text-align: center;
 }
 
 a:link {
     color: #008be4;
-}
-
-p, ul.tracks {
-    width: 70%;
-    max-width: 40em;
-    text-align: left;
-    margin: 1em auto;
-    padding: 0;
 }
 
 ul.tracks {
@@ -25,27 +11,21 @@ ul.tracks {
     counter-reset: track-counter;
 }
 
-.track {
-    border-bottom: 1px solid #ddd;
-}
-
-.track:last-child {
-    border-bottom: 0
-}
-
-.track a {
-    padding: 1em;
-    display: block;
-    text-decoration: none
-}
+.track a { text-decoration: none; }
 
 .track a:before {
     content: counter(track-counter) ". ";
     counter-increment: track-counter
 }
 
-.track a:hover {
-    background: #eee
+.text {
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.padded {
+    padding: 1em;
 }
 
 .img {
@@ -60,6 +40,8 @@ ul.tracks {
 }
 
 #gallery img {
-    width: 200px;
-    padding: 1em;
+    max-width: 100%;
+    width: 100%;
 }
+
+#popis { margin-bottom: 2em; }

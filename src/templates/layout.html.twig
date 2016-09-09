@@ -5,13 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>cyklotrasy</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block stylesheets %}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
     {% endblock %}
 </head>
 <body>
-{% block content %}{% endblock %}
+<div class="mdl-layout__container">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header has-drawer is-upgraded is-small-screen">
+        <header class="demo-header mdl-layout__header mdl-color--primary mdl-color-text--grey-600 is-casting-shadow">
+            <div class="mdl-layout__header-row">
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="index.php">Domov</a>
+                </nav>
+            </div>
+        </header>
+        <main class="mdl-color-text--grey-600 mdl-color--grey-100">
+            <div class="mdl-grid">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+</div>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

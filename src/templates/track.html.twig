@@ -2,18 +2,27 @@
 
 {% block content %}
 
-    {{ track.description|raw }}
+    <section class="text" id="popis">
+        {{ track.description|raw }}
 
-    {% if track.gpx %}
-        <p><strong>GPX súbor:</strong> <a href="{{ track.public_path ~ '/' ~ track.gpx }}">{{ track.gpx }}</a></p>
-    {% endif %}
+        {% if track.gpx %}
+            <span class="mdl-chip mdl-chip--contact">
+                <span class="mdl-chip__contact material-icons mdl-color--purple mdl-color-text--white">directions</span>
+                <span class="mdl-chip__text">
+                    <a href="{{ track.public_path ~ '/' ~ track.gpx }}">{{ track.gpx }}</a>
+                </span>
+            </span>
+        {% endif %}
+    </section>
 
-    <div id="map"></div>
+    <section class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-color--white" id="mapa">
+        <div id="map"></div>
+    </section>
 
     {% if track.images %}
-        <div id="gallery">
+        <div id="gallery" class="mdl-grid mdl-cell mdl-cell--12-col">
             {% for image in track.images %}
-                <a href="{{ track.public_path ~ '/' ~ image }}">
+                <a href="{{ track.public_path ~ '/' ~ image }}" class="mdl-cell mdl-cell--2-col mdl-shadow--2dp mdl-color--white">
                     <img class="img" src="{{ track.public_path ~ '/' ~ image }}"/>
                 </a>
             {% endfor %}
@@ -80,7 +89,8 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css"/>
-    <link href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" rel="stylesheet"/>
+    <link href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css"
+          rel="stylesheet"/>
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
     <link rel="stylesheet" href="assets/css/leaflet.elevation-0.0.4.css">
 {% endblock %}
