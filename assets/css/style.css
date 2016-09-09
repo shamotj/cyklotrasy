@@ -11,7 +11,9 @@ ul.tracks {
     counter-reset: track-counter;
 }
 
-.track a { text-decoration: none; }
+.track a {
+    text-decoration: none;
+}
 
 .track a:before {
     content: counter(track-counter) ". ";
@@ -35,6 +37,7 @@ ul.tracks {
 #map {
     height: 600px;
 }
+
 #gallery {
     margin: 2em 0;
 }
@@ -47,4 +50,11 @@ ul.tracks {
     object-fit: cover;
 }
 
-#popis { margin-bottom: 2em; }
+#popis {
+    margin-bottom: 2em;
+}
+
+#stats {
+    width: 100%;
+    margin: 2em 0;
+}

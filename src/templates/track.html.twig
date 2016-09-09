@@ -13,6 +13,27 @@
                 </span>
             </span>
         {% endif %}
+        
+        {% if stats %}
+            <table class="mdl-data-table mdl-shadow--2dp mdl-color--white" id="stats">
+                <tr>
+                    <th>Celková dĺžka</th>
+                    <td>{{ (stats.distanceTravelled / 3280.8)|round(2) }} km</td>
+                </tr>
+                <tr>
+                    <th>Minimálna výška</th>
+                    <td>{{ stats.elevation.min }} m</td>
+                </tr>
+                <tr>
+                    <th>Maximálna výška</th>
+                    <td>{{ stats.elevation.max }} m</td>
+                </tr>
+                <tr>
+                    <th>Nastúpané</th>
+                    <td>{{ stats.elevation.gain }} m</td>
+                </tr>
+            </table>
+        {% endif %}
     </section>
 
     <section class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-color--white" id="mapa">
