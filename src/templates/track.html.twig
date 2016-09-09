@@ -28,25 +28,47 @@
     <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
     <script src="assets/js/zepto.min.js"></script>
     <script src="assets/js/magnific-popup.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="assets/js/leaflet.elevation-0.0.4.min.js"></script>
     <script>
         var map = L.map('map', {
             fullscreenControl: true
         });
+
         L.tileLayer('http://t{s}.freemap.sk/T/{z}/{x}/{y}.jpeg', {
             attribution: 'Map data &copy; <a href="http://www.osm.org">OpenStreetMap</a>'
         }).addTo(map);
 
+        var el = L.control.elevation({
+            position: "topright",
+            theme: "purple-theme",
+            useHeightIndicator: true,
+            hoverNumber: {
+                decimalsX: 3, //decimals on distance (always in km)
+                decimalsY: 0, //deciamls on hehttps://www.npmjs.com/package/leaflet.coordinatesight (always in m)
+                formatter: undefined //custom formatter function may be injected
+            },
+            collapsed: true,
+        });
+        el.addTo(map);
+
+
         var gpx = '{{ track.public_path ~ '/' ~ track.gpx }}';
-        new L.GPX(gpx, {
+        var g = new L.GPX(gpx, {
             async: true,
             marker_options: {
                 startIconUrl: 'assets/img/pin-icon-start.png',
                 endIconUrl: 'assets/img/pin-icon-end.png',
                 shadowUrl: 'assets/img/pin-shadow.png'
             }
-        }).on('loaded', function (e) {
+        });
+        g.on('loaded', function (e) {
             map.fitBounds(e.target.getBounds());
-        }).addTo(map);
+        });
+        g.on('addline', function (e) {
+            el.addData(e.line);
+        });
+        g.addTo(map);
 
         $('#gallery').magnificPopup({
             delegate: 'a',
@@ -58,7 +80,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css"/>
-    <link href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css"
-          rel="stylesheet"/>
+    <link href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" rel="stylesheet"/>
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/leaflet.elevation-0.0.4.css">
 {% endblock %}
