@@ -45,6 +45,7 @@ function loadTracks($dir) {
             }
         }
         closedir($res);
+        ksort($tracks);
     }
 
     return $tracks;
