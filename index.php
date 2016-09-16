@@ -32,10 +32,13 @@ if (isset($_GET['p'])) {
             $stats = $gpx->getStats('journey0');
             $elevationData = [];
             $dist = $idx = 0;
-            foreach ($gpx->getSegment('journey0', 'seg0')->points as $point) {
-                $dist += (float) $gpx->jdist[$idx] * 0.3048; 
-                $elevationData[$dist] = $point->elevation;
-                $idx++;
+            // loop each segment
+            foreach ($gpx->getTrackSegmentNames('journey0') as $segName) {
+                foreach ($gpx->getSegment('journey0', $segName)->points as $point) {
+                    $dist += (float) $gpx->jdist[$idx] * 0.3048; 
+                    $elevationData[$dist] = $point->elevation;
+                    $idx++;
+                }
             }
         }
 
