@@ -34,6 +34,7 @@
                 </tr>
             </table>
         {% endif %}
+        <canvas id="myChart"></canvas>
     </section>
 
     <section class="mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-color--white" id="mapa">
@@ -53,6 +54,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
     <script src="https://rawgithub.com/mpetazzoni/leaflet-gpx/master/gpx.js"></script>
     <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
@@ -61,6 +63,51 @@
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="assets/js/leaflet.elevation-0.0.4.min.js"></script>
     <script>
+        /************
+         *  Chart
+         ************/
+        var data = {
+            datasets: [{
+                label: 'Elevation profile',
+                data: [
+                {% for distance,elevation in elevationData %}
+                { x: {{ distance / 1000 }}, y: {{ elevation }} },
+                {% endfor %}
+                ],
+                pointRadius: 0,
+                backgroundColor: "rgba(102,0,102,0.4)",
+                borderColor: "rgba(102,0,102,1)", 
+                borderWidth: 2,
+            }]
+
+        };
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'linear',
+                        position: 'bottom',
+                        scaleLabel: {
+                            display: true,
+                            labelString: "vzdialenosť v km"
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: "nadmorská výška v metroch"
+                        }
+                    }]
+                }
+            }
+        });
+
+        /************
+         *  MAP
+         ************/
         var map = L.map('map', {
             fullscreenControl: true
         });

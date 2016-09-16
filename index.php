@@ -2,9 +2,8 @@
 
 require_once 'vendor/autoload.php';
 require_once 'src/functions.php';
-require_once 'src/GPXIngest.php'; // This will be removed once elevation gain is in master.
 
-//use GPXIngest\GPXIngest;
+use GPXIngest\GPXIngest;
 
 $dataDir = __DIR__ . '/data';
 $templateDir = __DIR__ . '/src/templates';
@@ -31,11 +30,19 @@ if (isset($_GET['p'])) {
             $gpx->loadFile($tracks[$trackName]['public_path'] . '/' . $tracks[$trackName]['gpx']);
             $gpx->ingest();
             $stats = $gpx->getStats('journey0');
+            $elevationData = [];
+            $dist = $idx = 0;
+            foreach ($gpx->getSegment('journey0', 'seg0')->points as $point) {
+                $dist += (float) $gpx->jdist[$idx] * 0.3048; 
+                $elevationData[$dist] = $point->elevation;
+                $idx++;
+            }
         }
 
         echo $twig->render('track.html.twig', [
             'track' => $tracks[$trackName],
             'stats' => (isset($stats)) ? $stats : null,
+            'elevationData' => $elevationData,
         ]);
     }
 } else if (!empty($tracks)) {

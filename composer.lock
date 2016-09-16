@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bentasker/PHP-GPX-Ingest.git",
-                "reference": "1e3aa5bddeb82c11d573fac4e065c4de22a07ea0"
+                "reference": "b82ca4981883427aff25104304c63ae8b61f3fe2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bentasker/PHP-GPX-Ingest/zipball/1e3aa5bddeb82c11d573fac4e065c4de22a07ea0",
-                "reference": "1e3aa5bddeb82c11d573fac4e065c4de22a07ea0",
+                "url": "https://api.github.com/repos/bentasker/PHP-GPX-Ingest/zipball/b82ca4981883427aff25104304c63ae8b61f3fe2",
+                "reference": "b82ca4981883427aff25104304c63ae8b61f3fe2",
                 "shasum": ""
             },
             "type": "library",
@@ -38,7 +38,7 @@
                 }
             ],
             "description": "PHP GPX-Ingest is a simple PHP class designed to ingest a basic Global Position eXchange (GPX) file and extract data/stats from the tracks within.",
-            "time": "2016-08-16 13:32:44"
+            "time": "2016-09-09 14:34:07"
         },
         {
             "name": "erusev/parsedown",
